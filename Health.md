@@ -32,36 +32,52 @@ code for Dog:
 import os
 import matplotlib.pyplot as plt
 from tensorflow.keras.preprocessing import image
-folder_path = '/content/drive/MyDrive/dogs'
+
+# Set your folder path
+folder_path = '/content/drive/MyDrive/DOG'
+
+# List image files (jpg/png)
 image_files = [f for f in os.listdir(folder_path) if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
+
+# Show first 5 images
 for i in range(min(50, len(image_files))):
     img_path = os.path.join(folder_path, image_files[i])
     img = image.load_img(img_path, target_size=(200, 200))
+
     plt.imshow(img)
     plt.title(f"Image: {image_files[i]}")
     plt.axis('off')
     plt.show()
 ```
 ## 🌟 Output:
-![image](https://github.com/user-attachments/assets/19436fa3-47f9-4cae-896e-3f83761b28f5)
+![image](https://github.com/user-attachments/assets/74793cb6-d989-4399-a0e2-bb6147564554)
+
 
 ```python
 code for cat:
 import os
 import matplotlib.pyplot as plt
 from tensorflow.keras.preprocessing import image
-folder_path = '/content/drive/MyDrive/cats'
+
+# Set your folder path
+folder_path = '/content/drive/MyDrive/CAT'
+
+# List image files (jpg/png)
 image_files = [f for f in os.listdir(folder_path) if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
+
+# Show first 5 images
 for i in range(min(50, len(image_files))):
     img_path = os.path.join(folder_path, image_files[i])
     img = image.load_img(img_path, target_size=(200, 200))
+
     plt.imshow(img)
     plt.title(f"Image: {image_files[i]}")
     plt.axis('off')
     plt.show()
  ```
 ## 🌟 Output:
-![image](https://github.com/user-attachments/assets/599cf87f-368e-4b18-a4a2-ab6501383b07)
+![image](https://github.com/user-attachments/assets/71cad084-4d7c-4f53-b044-40fa685e973a)
+
     
 ## 🚀 Key Technologies
 
