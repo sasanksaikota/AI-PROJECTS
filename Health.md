@@ -27,8 +27,9 @@ The script loads up to the first 50 images, resizing each to 200x200 pixels usin
 ```python
 from google.colab import drive
 drive.mount('/content/drive')
-
+```
 code for Dog:
+```python
 import os
 import matplotlib.pyplot as plt
 from tensorflow.keras.preprocessing import image
@@ -52,9 +53,8 @@ for i in range(min(50, len(image_files))):
 ## 🌟 Output:
 ![image](https://github.com/user-attachments/assets/74793cb6-d989-4399-a0e2-bb6147564554)
 
-
-```python
 code for cat:
+```python
 import os
 import matplotlib.pyplot as plt
 from tensorflow.keras.preprocessing import image
