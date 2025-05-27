@@ -122,10 +122,9 @@ This project focuses on analyzing a healthcare dataset to predict key medical ou
 ```
 
 
-##Code
+### Code
 
 ```python
-
 # Import libraries
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -165,7 +164,7 @@ print(y.head())
 ```
 ## 🌟 Output:
 ![image](https://github.com/user-attachments/assets/6eddde46-ff2c-4933-a424-800fe6d5a427)
-```
+
 ```python
 
 from sklearn.model_selection import train_test_split
@@ -225,7 +224,7 @@ y_test
 ```
 ## 🌟 Output:
 ![image](https://github.com/user-attachments/assets/b7ef2a2a-346d-460f-b6fe-e3131413c2a8)
-```
+
 ```python
 # Compare actual vs predicted results
 comparison = pd.DataFrame({
@@ -377,6 +376,7 @@ LIME / SHAP / ELI5 / Alibi: Model explanation and interpretability
 Matplotlib: Visualization of model results and explanations
 ```
 ## 🚀 Further research
+
 ```
 Explore Deep Learning Models: Implement deep learning architectures such as Convolutional Neural Networks (CNNs) or Recurrent Neural Networks (RNNs) for improved performance on complex healthcare data.
 Integrate with EHR Systems: Connect the model with real-world Electronic Health Record (EHR) systems for real-time insights and deployment in clinical environments.
@@ -386,3 +386,167 @@ Dashboard for Stakeholders: Create a web-based interactive dashboard using tools
 Fairness and Ethics: Conduct fairness audits and evaluate potential biases in predictions, especially across sensitive features like gender or ethnicity.
 Explainability Benchmarks: Compare performance of different model interpretability techniques (e.g., LIME vs SHAP vs ALE) on clinical decision-making effectiveness.
 ```
+
+## 🎬 IMDB DataSet
+
+## project content
+
+```
+This project involves preprocessing and analyzing a movie reviews dataset (IMDb) to prepare it for sentiment classification using Natural Language Processing (NLP) techniques. The steps include text normalization, tokenization, stopword removal, contraction expansion, and TF-IDF feature extraction.
+```
+## Code
+
+```python
+pip install contractions
+# Read from file (e.g., dataset_book.txt)
+with open('IMDB Dataset.csv', 'r', encoding='utf-8') as file:
+    text = file.read()
+# Convert all text to lowercase
+text_lower = text.lower()
+# Print first 500 characters for preview
+print(text_lower[:50001])
+```
+
+## 🌟 Output:
+![image](https://github.com/user-attachments/assets/654855ae-086e-44a5-a9f8-0f8730181054)
+
+```python
+import re
+# Read the file content
+with open('IMDB Dataset.csv', 'r', encoding='utf-8') as file:
+    text = file.read()
+# Remove punctuation using regex
+text_no_punct = re.sub(r'[^\w\s]', '', text)
+# Print the first 500 characters to preview
+print(text_no_punct[:50001])
+import nltk
+nltk.download('stopwords')
+from nltk.corpus import stopwords
+# Load English stopwords
+stop_words = set(stopwords.words('english'))
+# Read content from the file
+with open('IMDB Dataset.csv', 'r', encoding='utf-8') as file:
+    text = file.read()
+# Convert to lowercase and split into words
+words = text.lower().split()
+# Filter out stopwords
+filtered = [word for word in words if word not in stop_words]
+# Print the first 50 filtered words
+print(filtered[:50001])
+```
+## 🌟 Output:
+![image](https://github.com/user-attachments/assets/b116deb5-1d75-4053-9d57-693c1346b26e)
+![image](https://github.com/user-attachments/assets/6a7670b5-992c-4470-8149-eaafdce07d6b)
+
+```python
+
+import re
+# Read content from the file
+with open('IMDB Dataset.csv', 'r', encoding='utf-8') as file:
+    text = file.read()
+# Remove numbers using regex
+text_no_numbers = re.sub(r'\d+', '', text)
+# Print the first 500 characters to preview
+print(text_no_numbers[:50001])
+import re
+# Read content from the file
+with open('IMDB Dataset.csv', 'r', encoding='utf-8') as file:
+    text = file.read()
+# Remove URLs using regex
+text_no_url = re.sub(r"http\S+|www\S+|https\S+", "", text)
+# Print the first 500 characters to preview
+print(text_no_url[:50001])
+```
+## 🌟 Output:
+![image](https://github.com/user-attachments/assets/a787ad75-bfe7-403a-b74d-2bb76beaeff7)
+
+![image](https://github.com/user-attachments/assets/876b893e-84ea-447f-8a15-3c93f1bb13f9)
+
+```python
+# Read the content from the file
+with open('IMDB Dataset.csv', 'r', encoding='utf-8') as file:
+    text = file.read()
+# Tokenize using split (basic method)
+tokens = text.split()
+# Print the first 50 tokens
+print(tokens[:50001])
+with open("IMDB Dataset.csv", "r", encoding="utf-8") as file:
+    docs = [line.strip() for line in file if line.strip()]
+import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer
+import re
+# Load the IMDB dataset using pandas
+df = pd.read_csv("IMDB Dataset.csv")
+# Extract review texts and clean HTML tags
+docs = [re.sub(r"<.*?>", "", review) for review in df["review"].dropna()]
+# Initialize TF-IDF Vectorizer
+vectorizer = TfidfVectorizer(stop_words='english', max_features=50001)
+# Fit and transform the reviews
+X = vectorizer.fit_transform(docs)
+# Display vocabulary
+print("Vocabulary:")
+print(vectorizer.vocabulary_)
+# Display TF-IDF matrix shape (avoid printing full matrix for large data)
+print("\nTF-IDF Matrix shape:")
+print(X.shape)
+# Optionally, print TF-IDF vector for first review
+print("\nTF-IDF Vector for first review:")
+print(X[0])
+```
+## 🌟 Output:
+![image](https://github.com/user-attachments/assets/15621fec-fcc8-4d38-8e36-ae9e5e4a2690)
+
+```python
+pip install contractions
+import pandas as pd
+import contractions
+# Load the CSV
+df = pd.read_csv("IMDB Dataset.csv")
+# Expand contractions in the 'review' column
+df["expanded_review"] = df["review"].apply(lambda x: contractions.fix(x) if pd.notnull(x) else "")
+# Print a few examples
+print(df[["review", "expanded_review"]].head())
+```
+## 🌟 Output:
+![image](https://github.com/user-attachments/assets/ea4a55a2-e2d8-4fcd-8bf4-4bc3f0f29c56)
+
+```python
+import re
+with open("IMDB Dataset.csv", "r", encoding="utf-8") as file:
+    lines = file.readlines()
+# Clean up spaces line by line
+cleaned_lines = [re.sub(r'\s+', ' ', line).strip() for line in lines]
+# Print cleaned lines
+for line in cleaned_lines:
+    print(line)
+```
+## 🌟 Output:
+![image](https://github.com/user-attachments/assets/b574aead-8e90-4406-95df-8dec7c855777)
+
+
+## 📌 Description
+```
+The goal of this project is to clean and transform raw IMDb movie review text data to prepare it for machine learning tasks like sentiment classification. We load the dataset, normalize the text, and convert it into TF-IDF vectors. This prepares the data for downstream tasks such as building classification models.
+```
+
+## 🚀 Key Technologies
+
+```
+Python (Pandas, re): Data manipulation and regular expressions
+NLTK: Natural language processing and stopword removal
+Scikit-learn (TfidfVectorizer): Feature extraction via TF-IDF
+Contractions: Expanding English contractions for normalization
+```
+## 🚀 Further research
+
+```
+Sentiment Classification Models: Train and compare models like Logistic Regression, Naive Bayes, SVM, and deep learning (e.g., LSTM, CNN) on the TF-IDF features.
+Transformer-Based Approaches: Fine-tune pre-trained transformer models such as BERT or RoBERTa for more accurate sentiment predictions.
+Explainability: Use LIME or SHAP to interpret model predictions and understand which words contribute most to sentiment classification.
+Data Augmentation: Apply techniques such as back-translation or synonym replacement to expand the training dataset.
+Streaming Analysis: Analyze live movie reviews from platforms like Twitter or Reddit and classify them in real-time.
+Deployment: Develop an interactive web interface using Streamlit, Gradio, or Flask to deploy the sentiment analysis tool for public use.
+Multilingual Sentiment Analysis: Expand the dataset to include reviews in multiple languages and explore multilingual NLP models.
+```
+
+
